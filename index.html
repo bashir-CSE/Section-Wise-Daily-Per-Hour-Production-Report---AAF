@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+		/>
+		<style>
+			/* Custom Styles for Ayesha Abed Foundation Theme */
+			body {
+				background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+				min-height: 100vh;
+				font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+					Roboto, sans-serif;
+			}
+			.form-container {
+				background-color: white;
+				border-radius: 1rem;
+				box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+					0 10px 10px -5px rgba(0, 0, 0, 0.04);
+				overflow: hidden;
+			}
+			.form-container:hover {
+				box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.15),
+					0 15px 15px -5px rgba(0, 0, 0, 0.06);
+			}
+			.form-header {
+				background: linear-gradient(135deg, #05339c 0%, #0f766e 100%);
+				color: white;
+				padding: 2rem;
+				text-align: center;
+				border-bottom: 4px solid rgba(255, 255, 255, 0.2);
+				background-size: 200% 200%;
+				animation: gradientAnimation 15s ease infinite;
+			}
+			.form-header h1 {
+				font-size: 2.5rem;
+				font-weight: 700;
+				margin-bottom: 0.5rem;
+				text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+			.form-header p {
+				font-size: 1.125rem;
+				font-weight: 400;
+				opacity: 0.9;
+			}
+			.btn-primary {
+				background: linear-gradient(135deg, #0d9488 0%, #05339c 100%);
+				color: white;
+				font-weight: 600;
+				border-radius: 0.5rem;
+				padding: 0.75rem 2rem;
+				transition: all 0.2s, transform 0.1s;
+				box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+					0 2px 4px -1px rgba(0, 0, 0, 0.06);
+			}
+			.btn-primary:hover {
+				background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%);
+				transform: translateY(-1px);
+				box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+					0 4px 6px -2px rgba(0, 0, 0, 0.05);
+			}
+			.btn-primary:active {
+				transform: translateY(0);
+				box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+					0 2px 4px -1px rgba(0, 0, 0, 0.06);
+			}
+			.btn-secondary {
+				background-color: #e2e8f0;
+				color: #475569;
+				font-weight: 600;
+				border-radius: 0.5rem;
+				padding: 0.75rem 2rem;
+				transition: all 0.2s, transform 0.1s;
+				box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+					0 2px 4px -1px rgba(0, 0, 0, 0.06);
+				border: 1px solid #cbd5e1;
+			}
+			.btn-secondary:hover {
+				background-color: #cbd5e1;
+				transform: translateY(-1px);
+				box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+					0 4px 6px -2px rgba(0, 0, 0, 0.05);
+			}
+			.btn-secondary:active {
+				transform: translateY(0);
+				box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+					0 2px 4px -1px rgba(0, 0, 0, 0.06);
+			}
+			.form-input,
+			.form-select {
+				border: 2px solid #cbd5e1;
+				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+				border-radius: 0.5rem;
+				padding: 0.75rem 1rem;
+				font-size: 1rem;
+				background-color: #ffffff;
+				position: relative;
+				overflow: hidden;
+			}
+			.form-input::before,
+			.form-select::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(
+					90deg,
+					transparent,
+					rgba(13, 148, 136, 0.1),
+					transparent
+				);
+				transition: left 0.5s;
+			}
+			.form-input:focus,
+			.form-select:focus {
+				border-color: #0d9488;
+				box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2),
+					0 0 20px rgba(13, 148, 136, 0.1);
+				outline: none;
+				transform: translateY(-2px);
+			}
+			.form-input:focus::before,
+			.form-select:focus::before {
+				left: 100%;
+			}
+			.form-input:valid,
+			.form-select:valid {
+				border-color: #10b981;
+			}
+			.table-header th {
+				background-color: #f8fafc;
+				color: #1e293b;
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				font-size: 0.875rem;
+				padding: 1rem;
+			}
+			#item-table-body tr:nth-child(even) {
+				background-color: #f8fafc;
+			}
+			#item-table-body tr:hover {
+				background-color: #f1f5f9;
+			}
+			.action-btn {
+				cursor: pointer;
+				position: relative;
+			}
+			.add-row-btn:hover {
+				color: #65a30d;
+				text-shadow: 0 0 10px rgba(132, 158, 25, 0.5);
+			}
+			.delete-row-btn:hover {
+				color: #dc2626;
+				text-shadow: 0 0 10px rgba(229, 62, 62, 0.5);
+			}
+			.add-row-btn {
+				color: #849e19;
+			}
+			.delete-row-btn {
+				color: #e53e3e;
+			}
+			.modal-overlay {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: rgba(0, 0, 0, 0.7);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				z-index: 50;
+				opacity: 0;
+				visibility: hidden;
+				transition: all 0.3s ease-in-out;
+				backdrop-filter: blur(4px);
+			}
+			.modal-overlay.visible {
+				opacity: 1;
+				visibility: visible;
+			}
+			.modal-content {
+				background-color: white;
+				padding: 2.5rem;
+				border-radius: 1rem;
+				max-width: 500px;
+				width: 90%;
+				transform: scale(0.9) translateY(20px);
+				transition: all 0.3s ease-in-out;
+				box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+			}
+			.modal-overlay.visible .modal-content {
+				transform: scale(1) translateY(0);
+			}
+			.toast-container {
+				position: fixed;
+				top: 2rem;
+				right: 2rem;
+				z-index: 100;
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+			}
+			.toast {
+				background-color: white;
+				padding: 1rem 1.5rem;
+				border-radius: 0.75rem;
+				box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+					0 4px 6px -2px rgba(0, 0, 0, 0.05);
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+				min-width: 300px;
+				opacity: 0;
+				transform: translateX(100%);
+				transition: all 0.3s ease-in-out;
+			}
+			.toast.show {
+				opacity: 1;
+				transform: translateX(0);
+			}
+			.toast.success {
+				border-left: 5px solid #10b981;
+			}
+			.toast.error {
+				border-left: 5px solid #ef4444;
+			}
+			.loader-container {
+				display: none;
+				align-items: center;
+				gap: 1rem;
+			}
+			.loader {
+				position: relative;
+				width: 32px;
+				height: 32px;
+			}
+			.loader:before,
+			.loader:after {
+				content: "";
+				position: absolute;
+				border-radius: 50%;
+				animation: pulsOut 1.8s ease-in-out infinite;
+			}
+			.loader:before {
+				width: 100%;
+				height: 100%;
+				background: rgba(13, 148, 136, 0.7);
+				animation-delay: 0.9s;
+				box-shadow: 0 0 10px rgba(13, 148, 136, 0.5);
+			}
+			.loader:after {
+				width: 100%;
+				height: 100%;
+				background: rgba(13, 148, 136, 0.9);
+				animation-delay: 0s;
+				box-shadow: 0 0 20px rgba(13, 148, 136, 0.7);
+			}
+			@keyframes pulsOut {
+				0% {
+					transform: scale(0);
+					opacity: 1;
+				}
+				100% {
+					transform: scale(1);
+					opacity: 0;
+				}
+			}
+			.loader-text {
+				color: #0d9488;
+				font-weight: 600;
+				animation: pulse 1.8s ease-in-out infinite;
+			}
+			@keyframes pulse {
+				0%,
+				100% {
+					opacity: 1;
+				}
+				50% {
+					opacity: 0.6;
+				}
+			}
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(30px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+			@keyframes slideInRight {
+				from {
+					opacity: 0;
+					transform: translateX(50px);
+				}
+				to {
+					opacity: 1;
+					transform: translateX(0);
+				}
+			}
+			@keyframes bounce {
+				0%,
+				20%,
+				53%,
+				80%,
+				100% {
+					animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+					transform: translate3d(0, 0, 0);
+				}
+				40%,
+				43% {
+					animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+					transform: translate3d(0, -30px, 0);
+				}
+				70% {
+					animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+					transform: translate3d(0, -15px, 0);
+				}
+				90% {
+					transform: translate3d(0, -4px, 0);
+				}
+			}
+			#current-date {
+				position: absolute;
+				top: 1.5rem;
+				right: 1.5rem;
+				color: rgba(255, 255, 255, 0.8);
+				font-weight: 500;
+				font-size: 0.875rem;
+				animation: slideInRight 0.8s ease-out;
+			}
+			@keyframes gradientAnimation {
+				0% {
+					background-position: 0% 50%;
+				}
+				50% {
+					background-position: 100% 50%;
+				}
+				100% {
+					background-position: 0% 50%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="max-w-6xl mx-auto mt-10 px-4">
+			<div class="form-container">
+				<div class="form-header">
+					<div id="current-date"></div>
+					<h1>Ayesha Abed Foundation, Gorpara</h1>
+					<p>Section Wise Daily Per Hour Production Report</p>
+				</div>
+
+				<form id="production-form" class="p-8">
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+						<div>
+							<label
+								for="section-name"
+								class="block text-sm font-semibold text-gray-700 mb-2"
+								><i class="fas fa-building mr-2"></i>Section Name</label
+							>
+							<select
+								id="section-name"
+								name="section-name"
+								class="form-select w-full"
+								required
+							>
+								<option value="" disabled selected>Select a Section</option>
+								<? for (var i = 0; i < sections.length; i++) { ?>
+								<option value="<?= sections[i] ?>"><?= sections[i] ?></option>
+								<? } ?>
+							</select>
+						</div>
+						<div>
+							<label
+								for="time"
+								class="block text-sm font-semibold text-gray-700 mb-2"
+								><i class="fas fa-clock mr-2"></i>Time Slot</label
+							>
+							<select id="time" name="time" class="form-select w-full" required>
+								<option value="" disabled selected>Select a Time</option>
+								<? for (var i = 0; i < times.length; i++) { ?>
+								<option value="<?= times[i] ?>"><?= times[i] ?></option>
+								<? } ?>
+							</select>
+						</div>
+					</div>
+
+					<div
+						class="overflow-x-auto rounded-lg border border-gray-200 shadow-sm mb-10"
+					>
+						<table class="min-w-full divide-y divide-gray-200">
+							<thead class="table-header">
+								<tr>
+									<th class="px-6 py-4 text-center w-2/5">Item Name</th>
+									<th class="px-6 py-4 text-center w-1/5">Quantity</th>
+									<th class="px-6 py-4 text-center w-2/5">Action</th>
+								</tr>
+							</thead>
+							<tbody
+								id="item-table-body"
+								class="bg-white divide-y divide-gray-200"
+							></tbody>
+						</table>
+					</div>
+
+					<div class="flex flex-col sm:flex-row items-center justify-end gap-6">
+						<div id="loader-container" class="loader-container">
+							<div class="loader"></div>
+							<span class="loader-text">Submitting report...</span>
+						</div>
+						<div
+							id="status-message"
+							class="text-base font-medium text-gray-600"
+						></div>
+						<button id="clear-button" type="button" class="btn-secondary">
+							<i class="fas fa-undo mr-2"></i>Clear Form
+						</button>
+						<button
+							id="submit-button"
+							type="submit"
+							class="btn-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+						>
+							<i class="fas fa-paper-plane mr-2"></i>Submit Report
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<template id="item-options-template">
+			<option value="" disabled selected>Select an Item</option>
+			<? for (var i = 0; i < items.length; i++) { ?>
+			<option value="<?= items[i] ?>"><?= items[i] ?></option>
+			<? } ?>
+		</template>
+
+		<!-- Confirmation Modal -->
+		<div id="confirmation-modal" class="modal-overlay">
+			<div class="modal-content">
+				<h2 class="text-2xl font-bold text-gray-800 mb-4">
+					Confirm Submission
+				</h2>
+				<p class="text-gray-600 mb-6">
+					Are you sure you want to submit this report?
+				</p>
+				<div class="flex justify-end gap-4">
+					<button
+						id="modal-cancel"
+						type="button"
+						class="px-6 py-2 bg-gray-200 text-gray-800 font-medium rounded-md hover:bg-gray-300 transition-colors"
+					>
+						<i class="fas fa-times mr-2"></i>Cancel
+					</button>
+					<button
+						id="modal-confirm"
+						type="button"
+						class="px-6 py-2 bg-teal-600 text-white font-medium rounded-md hover:bg-teal-700 transition-colors"
+					>
+						<i class="fas fa-check mr-2"></i>Confirm
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- Toast Notification Container -->
+		<div id="toast-container" class="toast-container"></div>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				const form = document.getElementById("production-form");
+				const formContainer = document.querySelector(".form-container");
+				const tableBody = document.getElementById("item-table-body");
+				const itemOptionsTemplate = document.getElementById(
+					"item-options-template"
+				);
+				const loaderContainer = document.getElementById("loader-container");
+				const submitButton = document.getElementById("submit-button");
+				const modal = document.getElementById("confirmation-modal");
+				const modalConfirm = document.getElementById("modal-confirm");
+				const modalCancel = document.getElementById("modal-cancel");
+				const clearButton = document.getElementById("clear-button");
+
+				let formDataToSubmit = null;
+
+				function createNewRow() {
+					const newRow = document.createElement("tr");
+					newRow.innerHTML = `
+            <td class="px-6 py-4 whitespace-nowrap">
+              <select name="item-name" class="item-name-select form-select w-full" required>
+                ${itemOptionsTemplate.innerHTML}
+              </select>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap">
+              <input type="number" name="qty" class="qty-input form-input w-full" placeholder="e.g., 50" min="1" required>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-center text-xl">
+              <button type="button" class="add-row-btn action-btn" title="Add new row">
+                <i class="fas fa-plus"></i>
+              </button>
+              <button type="button" class="delete-row-btn action-btn ml-4" title="Delete this row">
+                <i class="fas fa-minus-circle"></i>
+              </button>
+            </td>
+          `;
+					tableBody.appendChild(newRow);
+
+					updateDeleteButtons();
+					const itemNameSelect = newRow.querySelector(".item-name-select");
+					itemNameSelect.focus();
+					itemNameSelect.addEventListener("change", updateItemOptions);
+				}
+
+				function updateItemOptions() {
+					const allItemSelects =
+						tableBody.querySelectorAll(".item-name-select");
+					const selectedValues = new Set();
+					allItemSelects.forEach((select) => {
+						if (select.value) selectedValues.add(select.value);
+					});
+					allItemSelects.forEach((select) => {
+						const currentValue = select.value;
+						Array.from(select.options).forEach((option) => {
+							option.disabled =
+								selectedValues.has(option.value) &&
+								option.value !== currentValue;
+						});
+					});
+				}
+
+				function updateDeleteButtons() {
+					const rows = tableBody.querySelectorAll("tr");
+					rows.forEach((row) => {
+						const deleteBtn = row.querySelector(".delete-row-btn");
+						if (deleteBtn) {
+							deleteBtn.style.display =
+								rows.length > 1 ? "inline-block" : "none";
+						}
+					});
+				}
+
+				tableBody.addEventListener("click", (e) => {
+					const addBtn = e.target.closest(".add-row-btn");
+					const deleteBtn = e.target.closest(".delete-row-btn");
+					if (addBtn) createNewRow();
+					if (deleteBtn) {
+						deleteBtn.closest("tr").remove();
+						updateDeleteButtons();
+						updateItemOptions();
+					}
+				});
+
+				function showToast(message, type = "success") {
+					const toastContainer = document.getElementById("toast-container");
+					const toast = document.createElement("div");
+					toast.className = `toast ${type}`;
+					toast.innerHTML = `<p>${message}</p>`;
+					toastContainer.appendChild(toast);
+					setTimeout(() => toast.classList.add("show"), 10);
+					setTimeout(() => {
+						toast.classList.remove("show");
+						setTimeout(() => toast.remove(), 300);
+					}, 4000);
+				}
+
+				function handleSubmission() {
+					loaderContainer.style.display = "flex";
+					submitButton.disabled = true;
+					submitButton.textContent = "Submitting...";
+
+					// Add a subtle pulse animation to the submit button
+					submitButton.style.animation = "pulse 1s ease-in-out 3";
+
+					google.script.run
+						.withSuccessHandler((response) => {
+							if (response.status === "success") {
+								// Animate the form container on success
+								formContainer.style.animation = "bounce 0.6s ease-out";
+								setTimeout(() => {
+									formContainer.style.animation = "";
+								}, 600);
+
+								showToast(response.message, "success");
+								form.reset();
+								tableBody.innerHTML = "";
+								createNewRow();
+								updateItemOptions();
+							} else {
+								showToast(`Error: ${response.message}`, "error");
+							}
+							loaderContainer.style.display = "none";
+							submitButton.disabled = false;
+							submitButton.textContent = "Submit Report";
+							submitButton.style.animation = "";
+						})
+						.withFailureHandler((error) => {
+							showToast(`Submission failed: ${error.message}`, "error");
+							loaderContainer.style.display = "none";
+							submitButton.disabled = false;
+							submitButton.textContent = "Submit Report";
+							submitButton.style.animation = "";
+						})
+						.saveData(formDataToSubmit);
+				}
+
+				form.addEventListener("submit", (e) => {
+					e.preventDefault();
+					if (!form.checkValidity()) {
+						form.reportValidity();
+						return;
+					}
+					const sectionName = document.getElementById("section-name").value;
+					const time = document.getElementById("time").value;
+					const items = [];
+					tableBody.querySelectorAll("tr").forEach((row) => {
+						const itemName = row.querySelector(".item-name-select").value;
+						const qty = row.querySelector(".qty-input").value;
+						if (itemName && qty) {
+							items.push({ itemName, qty: parseInt(qty, 10) });
+						}
+					});
+					if (items.length === 0) {
+						alert("Please add at least one item row with a quantity.");
+						return;
+					}
+					formDataToSubmit = { sectionName, time, items };
+					modal.classList.add("visible");
+				});
+
+				modalConfirm.addEventListener("click", () => {
+					modal.classList.remove("visible");
+					handleSubmission();
+				});
+
+				modalCancel.addEventListener("click", () => {
+					modal.classList.remove("visible");
+					formDataToSubmit = null;
+				});
+
+				clearButton.addEventListener("click", () => {
+					form.reset();
+					tableBody.innerHTML = "";
+					createNewRow();
+					updateItemOptions();
+					showToast("Form has been cleared.", "success");
+				});
+
+				function displayDate() {
+					const dateElement = document.getElementById("current-date");
+					const today = new Date();
+					const options = {
+						weekday: "long",
+						year: "numeric",
+						month: "long",
+						day: "numeric",
+					};
+					dateElement.textContent = today.toLocaleDateString("en-US", options);
+				}
+				displayDate();
+				createNewRow();
+				updateItemOptions();
+			});
+		</script>
+	</body>
+</html>

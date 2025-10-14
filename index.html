@@ -11,36 +11,45 @@
 		<style>
 			/* Custom Styles for Ayesha Abed Foundation Theme */
 			body {
-				background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+				background: #f8fafc;
 				min-height: 100vh;
-				font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-					Roboto, sans-serif;
+				font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 			}
 			.form-container {
 				background-color: white;
-				border-radius: 1rem;
-				box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-					0 10px 10px -5px rgba(0, 0, 0, 0.04);
+				border-radius: 16px;
+				border: 1px solid #f1f5f9;
 				overflow: hidden;
+				box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 			}
 			.form-container:hover {
-				box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.15),
-					0 15px 15px -5px rgba(0, 0, 0, 0.06);
+				box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08),
+					0 8px 10px -6px rgba(0, 0, 0, 0.04);
+				transform: translateY(-2px);
 			}
 			.form-header {
-				background: linear-gradient(135deg, #05339c 0%, #0f766e 100%);
+				background: #0f172a;
 				color: white;
-				padding: 2rem;
+				padding: 2rem 2rem;
 				text-align: center;
-				border-bottom: 4px solid rgba(255, 255, 255, 0.2);
-				background-size: 200% 200%;
-				animation: gradientAnimation 15s ease infinite;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				position: relative;
+			}
+			.form-header::after {
+				content: '';
+				position: absolute;
+				bottom: -1px;
+				left: 0;
+				right: 0;
+				height: 4px;
+				background: linear-gradient(90deg, #0d9488 0%, #05339c 100%);
 			}
 			.form-header h1 {
-				font-size: 2.5rem;
+				font-size: 1.875rem;
 				font-weight: 700;
-				margin-bottom: 0.5rem;
-				text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+				margin-bottom: 0.25rem;
+				letter-spacing: -0.025em;
 			}
 			.form-header p {
 				font-size: 1.125rem;
@@ -48,14 +57,14 @@
 				opacity: 0.9;
 			}
 			.btn-primary {
-				background: linear-gradient(135deg, #0d9488 0%, #05339c 100%);
+				background: #0f172a;
 				color: white;
 				font-weight: 600;
-				border-radius: 0.5rem;
-				padding: 0.75rem 2rem;
-				transition: all 0.2s, transform 0.1s;
-				box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-					0 2px 4px -1px rgba(0, 0, 0, 0.06);
+				border-radius: 8px;
+				padding: 0.875rem 2.25rem;
+				transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+				border: 1px solid #1e293b;
+				letter-spacing: 0.025em;
 			}
 			.btn-primary:hover {
 				background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%);
@@ -69,21 +78,21 @@
 					0 2px 4px -1px rgba(0, 0, 0, 0.06);
 			}
 			.btn-secondary {
-				background-color: #e2e8f0;
+				background-color: #f1f5f9;
 				color: #475569;
 				font-weight: 600;
-				border-radius: 0.5rem;
-				padding: 0.75rem 2rem;
-				transition: all 0.2s, transform 0.1s;
-				box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-					0 2px 4px -1px rgba(0, 0, 0, 0.06);
-				border: 1px solid #cbd5e1;
+				border-radius: 8px;
+				padding: 0.875rem 2.25rem;
+				transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+				border: 1px solid #e2e8f0;
+				letter-spacing: 0.025em;
 			}
 			.btn-secondary:hover {
-				background-color: #cbd5e1;
+				background-color: #e2e8f0;
+				border-color: #cbd5e1;
 				transform: translateY(-1px);
-				box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-					0 4px 6px -2px rgba(0, 0, 0, 0.05);
+				box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+					0 2px 4px -2px rgba(0, 0, 0, 0.05);
 			}
 			.btn-secondary:active {
 				transform: translateY(0);
@@ -92,14 +101,19 @@
 			}
 			.form-input,
 			.form-select {
-				border: 2px solid #cbd5e1;
-				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-				border-radius: 0.5rem;
-				padding: 0.75rem 1rem;
-				font-size: 1rem;
-				background-color: #ffffff;
-				position: relative;
-				overflow: hidden;
+				border: 1px solid #e2e8f0;
+				transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+				border-radius: 8px;
+				padding: 1rem 1.5rem;
+				font-size: 0.9375rem;
+				background-color: #f8fafc;
+				width: 100%;
+			}
+			.form-input:focus,
+			.form-select:focus {
+				background-color: white;
+				border-color: #94a3b8;
+				box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
 			}
 			.form-input::before,
 			.form-select::before {
@@ -135,15 +149,16 @@
 			}
 			.table-header th {
 				background-color: #f8fafc;
-				color: #1e293b;
-				font-weight: 700;
+				color: #475569;
+				font-weight: 600;
 				text-transform: uppercase;
 				letter-spacing: 0.05em;
-				font-size: 0.875rem;
-				padding: 1rem;
+				font-size: 0.75rem;
+				padding: 1rem 1.5rem;
+				border-bottom: 2px solid #e2e8f0;
 			}
-			#item-table-body tr:nth-child(even) {
-				background-color: #f8fafc;
+			#item-table-body tr {
+				transition: background-color 0.2s ease-in-out;
 			}
 			#item-table-body tr:hover {
 				background-color: #f1f5f9;
@@ -351,16 +366,56 @@
 			}
             .footer {
                 text-align: center;
-                margin-top: 2rem;
+                margin-top: 3rem;
                 padding: 1.5rem;
-                color: #475569;
+                color: #64748b;
                 font-size: 0.875rem;
                 animation: fadeInUp 1s ease-out;
+                border-top: 1px solid #f1f5f9;
+                background: rgba(241, 245, 249, 0.4);
+                backdrop-filter: blur(4px);
+                border-radius: 12px;
+                margin: 3rem auto 0;
+                width: calc(100% - 4rem);
+            }
+            .footer p {
+                margin: 0.5rem 0;
+                line-height: 1.5;
+            }
+            @media (max-width: 768px) {
+                .form-header {
+                    padding: 1.5rem;
+                }
+                .form-header h1 {
+                    font-size: 1.5rem;
+                }
+                .form-header p {
+                    font-size: 1rem;
+                }
+                #current-date {
+                    position: static;
+                    margin-bottom: 1rem;
+                    text-align: center;
+                }
+                .grid-cols-1.lg\:grid-cols-2 {
+                    grid-template-columns: 1fr;
+                }
+                .flex-col.sm\:flex-row {
+                    flex-direction: column;
+                }
+                .btn-primary, .btn-secondary {
+                    width: 100%;
+                    text-align: center;
+                }
+                .footer {
+                    width: 100%;
+                    border-radius: 0;
+                }
             }
 		</style>
 	</head>
 	<body>
-		<div class="max-w-6xl mx-auto mt-10 px-4">
+					<div class="max-w-4xl mx-auto mt-12 px-4 sm:px-6 lg:px-8">
 			<div class="form-container">
 				<div class="form-header">
 					<div id="current-date"></div>
@@ -369,12 +424,12 @@
 				</div>
 
 				<form id="production-form" class="p-8">
-					<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+						<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
 						<div>
 							<label
 								for="section-name"
-								class="block text-sm font-semibold text-gray-700 mb-2"
-								><i class="fas fa-building mr-2"></i>Section Name</label
+								class="block text-sm font-medium text-slate-600 mb-3"
+								><i class="fas fa-building mr-2 opacity-80"></i>Section Name</label
 							>
 							<select
 								id="section-name"
@@ -391,8 +446,8 @@
 						<div>
 							<label
 								for="time"
-								class="block text-sm font-semibold text-gray-700 mb-2"
-								><i class="fas fa-clock mr-2"></i>Time Slot</label
+								class="block text-sm font-medium text-slate-600 mb-3"
+								><i class="fas fa-clock mr-2 opacity-80"></i>Time Slot</label
 							>
 							<select id="time" name="time" class="form-select w-full" required>
 								<option value="" disabled selected>Select a Time</option>
@@ -406,12 +461,12 @@
 					<div
 						class="overflow-x-auto rounded-lg border border-gray-200 shadow-sm mb-10"
 					>
-						<table class="min-w-full divide-y divide-gray-200">
+						<table class="min-w-full">
 							<thead class="table-header">
 								<tr>
-									<th class="px-6 py-4 text-center w-2/5">Item Name</th>
-									<th class="px-6 py-4 text-center w-1/5">Quantity</th>
-									<th class="px-6 py-4 text-center w-2/5">Action</th>
+									<th class="px-6 py-3 text-left w-2/5">Item Name</th>
+									<th class="px-6 py-3 text-center w-1/5">Quantity</th>
+									<th class="px-6 py-3 text-center w-2/5">Action</th>
 								</tr>
 							</thead>
 							<tbody

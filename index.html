@@ -3,17 +3,19 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<script src="https://cdn.tailwindcss.com"></script>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 		/>
 		<style>
-			/* Custom Styles for Ayesha Abed Foundation Theme */
 			body {
 				background: #f8fafc;
-				min-height: 100vh;
-				font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+				font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+					Roboto, sans-serif;
 			}
 			.form-container {
 				background-color: white;
@@ -22,28 +24,19 @@
 				overflow: hidden;
 				box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
 				transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-			}
-			.form-container:hover {
-				box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08),
-					0 8px 10px -6px rgba(0, 0, 0, 0.04);
-				transform: translateY(-2px);
+				width: 70%;
+				margin: 0 auto;
 			}
 			.form-header {
-				background: #0f172a;
+				background: linear-gradient(135deg, #0d9488 0%, #05339c 100%);
 				color: white;
 				padding: 2rem 2rem;
-				text-align: center;
 				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 				position: relative;
-			}
-			.form-header::after {
-				content: '';
-				position: absolute;
-				bottom: -1px;
-				left: 0;
-				right: 0;
-				height: 4px;
-				background: linear-gradient(90deg, #0d9488 0%, #05339c 100%);
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
 			}
 			.form-header h1 {
 				font-size: 1.875rem;
@@ -57,25 +50,12 @@
 				opacity: 0.9;
 			}
 			.btn-primary {
-				background: #0f172a;
-				color: white;
-				font-weight: 600;
-				border-radius: 8px;
-				padding: 0.875rem 2.25rem;
-				transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-				border: 1px solid #1e293b;
-				letter-spacing: 0.025em;
+				background-color: #0d9488;
+				border-color: #0d9488;
 			}
 			.btn-primary:hover {
-				background: linear-gradient(135deg, #0f766e 0%, #134e4a 100%);
-				transform: translateY(-1px);
-				box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-					0 4px 6px -2px rgba(0, 0, 0, 0.05);
-			}
-			.btn-primary:active {
-				transform: translateY(0);
-				box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-					0 2px 4px -1px rgba(0, 0, 0, 0.06);
+				background-color: #0f766e;
+				border-color: #0f766e;
 			}
 			.btn-secondary {
 				background-color: #f1f5f9;
@@ -94,59 +74,6 @@
 				box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
 					0 2px 4px -2px rgba(0, 0, 0, 0.05);
 			}
-			.btn-secondary:active {
-				transform: translateY(0);
-				box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-					0 2px 4px -1px rgba(0, 0, 0, 0.06);
-			}
-			.form-input,
-			.form-select {
-				border: 1px solid #e2e8f0;
-				transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-				border-radius: 8px;
-				padding: 1rem 1.5rem;
-				font-size: 0.9375rem;
-				background-color: #f8fafc;
-				width: 100%;
-			}
-			.form-input:focus,
-			.form-select:focus {
-				background-color: white;
-				border-color: #94a3b8;
-				box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-			}
-			.form-input::before,
-			.form-select::before {
-				content: "";
-				position: absolute;
-				top: 0;
-				left: -100%;
-				width: 100%;
-				height: 100%;
-				background: linear-gradient(
-					90deg,
-					transparent,
-					rgba(13, 148, 136, 0.1),
-					transparent
-				);
-				transition: left 0.5s;
-			}
-			.form-input:focus,
-			.form-select:focus {
-				border-color: #0d9488;
-				box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2),
-					0 0 20px rgba(13, 148, 136, 0.1);
-				outline: none;
-				transform: translateY(-2px);
-			}
-			.form-input:focus::before,
-			.form-select:focus::before {
-				left: 100%;
-			}
-			.form-input:valid,
-			.form-select:valid {
-				border-color: #10b981;
-			}
 			.table-header th {
 				background-color: #f8fafc;
 				color: #475569;
@@ -157,23 +84,15 @@
 				padding: 1rem 1.5rem;
 				border-bottom: 2px solid #e2e8f0;
 			}
-			#item-table-body tr {
-				transition: background-color 0.2s ease-in-out;
-			}
 			#item-table-body tr:hover {
 				background-color: #f1f5f9;
 			}
 			.action-btn {
 				cursor: pointer;
 				position: relative;
-			}
-			.add-row-btn:hover {
-				color: #65a30d;
-				text-shadow: 0 0 10px rgba(132, 158, 25, 0.5);
-			}
-			.delete-row-btn:hover {
-				color: #dc2626;
-				text-shadow: 0 0 10px rgba(229, 62, 62, 0.5);
+				background: transparent;
+				border: none;
+				font-size: 1.25rem;
 			}
 			.add-row-btn {
 				color: #849e19;
@@ -181,432 +100,357 @@
 			.delete-row-btn {
 				color: #e53e3e;
 			}
-			.modal-overlay {
-				position: fixed;
-				top: 0;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				background-color: rgba(0, 0, 0, 0.7);
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				z-index: 50;
-				opacity: 0;
-				visibility: hidden;
-				transition: all 0.3s ease-in-out;
-				backdrop-filter: blur(4px);
-			}
-			.modal-overlay.visible {
-				opacity: 1;
-				visibility: visible;
-			}
-			.modal-content {
-				background-color: white;
-				padding: 2.5rem;
-				border-radius: 1rem;
-				max-width: 500px;
-				width: 90%;
-				transform: scale(0.9) translateY(20px);
-				transition: all 0.3s ease-in-out;
-				box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-			}
-			.modal-overlay.visible .modal-content {
-				transform: scale(1) translateY(0);
-			}
-			.toast-container {
-				position: fixed;
-				top: 2rem;
-				right: 2rem;
-				z-index: 100;
-				display: flex;
-				flex-direction: column;
-				gap: 1rem;
-			}
-			.toast {
-				background-color: white;
-				padding: 1rem 1.5rem;
-				border-radius: 0.75rem;
-				box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-					0 4px 6px -2px rgba(0, 0, 0, 0.05);
-				display: flex;
-				align-items: center;
-				gap: 1rem;
-				min-width: 300px;
-				opacity: 0;
-				transform: translateX(100%);
-				transition: all 0.3s ease-in-out;
-			}
-			.toast.show {
-				opacity: 1;
-				transform: translateX(0);
-			}
-			.toast.success {
-				border-left: 5px solid #10b981;
-			}
-			.toast.error {
-				border-left: 5px solid #ef4444;
-			}
-			.loader-container {
-				display: none;
-				align-items: center;
-				gap: 1rem;
-			}
-			.loader {
-				position: relative;
-				width: 32px;
-				height: 32px;
-			}
-			.loader:before,
-			.loader:after {
-				content: "";
-				position: absolute;
-				border-radius: 50%;
-				animation: pulsOut 1.8s ease-in-out infinite;
-			}
-			.loader:before {
-				width: 100%;
-				height: 100%;
-				background: rgba(13, 148, 136, 0.7);
-				animation-delay: 0.9s;
-				box-shadow: 0 0 10px rgba(13, 148, 136, 0.5);
-			}
-			.loader:after {
-				width: 100%;
-				height: 100%;
-				background: rgba(13, 148, 136, 0.9);
-				animation-delay: 0s;
-				box-shadow: 0 0 20px rgba(13, 148, 136, 0.7);
-			}
-			@keyframes pulsOut {
-				0% {
-					transform: scale(0);
-					opacity: 1;
-				}
-				100% {
-					transform: scale(1);
-					opacity: 0;
-				}
-			}
-			.loader-text {
-				color: #0d9488;
-				font-weight: 600;
-				animation: pulse 1.8s ease-in-out infinite;
-			}
-			@keyframes pulse {
-				0%,
-				100% {
-					opacity: 1;
-				}
-				50% {
-					opacity: 0.6;
-				}
-			}
-			@keyframes fadeInUp {
-				from {
-					opacity: 0;
-					transform: translateY(30px);
-				}
-				to {
-					opacity: 1;
-					transform: translateY(0);
-				}
-			}
-			@keyframes slideInRight {
-				from {
-					opacity: 0;
-					transform: translateX(50px);
-				}
-				to {
-					opacity: 1;
-					transform: translateX(0);
-				}
-			}
-			@keyframes bounce {
-				0%,
-				20%,
-				53%,
-				80%,
-				100% {
-					animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-					transform: translate3d(0, 0, 0);
-				}
-				40%,
-				43% {
-					animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-					transform: translate3d(0, -30px, 0);
-				}
-				70% {
-					animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-					transform: translate3d(0, -15px, 0);
-				}
-				90% {
-					transform: translate3d(0, -4px, 0);
-				}
-			}
-			#current-date {
-				position: absolute;
-				top: 1.5rem;
-				right: 1.5rem;
-				color: rgba(0, 0, 0, 0.8);
-				font-weight: 500;
+			.footer {
+				text-align: center;
+				margin-top: 3rem;
+				padding: 1.5rem;
+				color: #64748b;
 				font-size: 0.875rem;
-				animation: slideInRight 0.8s ease-out;
+				border-top: 1px solid #f1f5f9;
+				background: rgba(241, 245, 249, 0.4);
 			}
-			@keyframes gradientAnimation {
-				0% {
-					background-position: 0% 50%;
-				}
-				50% {
-					background-position: 100% 50%;
-				}
-				100% {
-					background-position: 0% 50%;
-				}
-			}
-            .footer {
-                text-align: center;
-                margin-top: 3rem;
-                padding: 1.5rem;
-                color: #64748b;
-                font-size: 0.875rem;
-                animation: fadeInUp 1s ease-out;
-                border-top: 1px solid #f1f5f9;
-                background: rgba(241, 245, 249, 0.4);
-                backdrop-filter: blur(4px);
-                border-radius: 12px;
-                margin: 3rem auto 0;
-                width: calc(100% - 4rem);
-            }
-            .footer p {
-                margin: 0.5rem 0;
-                line-height: 1.5;
-            }
-            @media (max-width: 768px) {
-                .form-header {
-                    padding: 1.5rem;
-                }
-                .form-header h1 {
-                    font-size: 1.5rem;
-                }
-                .form-header p {
-                    font-size: 1rem;
-                }
-                #current-date {
-                    position: static;
-                    margin-bottom: 1rem;
-                    text-align: center;
-                }
-                .grid-cols-1.lg\:grid-cols-2 {
-                    grid-template-columns: 1fr;
-                }
-                .flex-col.sm\:flex-row {
-                    flex-direction: column;
-                }
-                .btn-primary, .btn-secondary {
-                    width: 100%;
-                    text-align: center;
-                }
-                .footer {
-                    width: 100%;
-                    border-radius: 0;
-                }
-            }
 		</style>
 	</head>
 	<body>
-					<div class="max-w-4xl mx-auto mt-12 px-4 sm:px-6 lg:px-8">
-			<div class="form-container">
+		<div class="container mt-5">
+			<div class="form-container shadow-lg">
 				<div class="form-header">
-					<div id="current-date"></div>
+					<div id="current-date" class="position-absolute top-0 end-0 p-3"></div>
 					<h1>Ayesha Abed Foundation, Gorpara</h1>
 					<p>Section Wise Daily Per Hour Production Report</p>
 				</div>
 
-				<form id="production-form" class="p-8">
-						<div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-						<div>
-							<label
-								for="section-name"
-								class="block text-sm font-medium text-slate-600 mb-3"
-								><i class="fas fa-building mr-2 opacity-80"></i>Section Name</label
-							>
-							<select
-								id="section-name"
-								name="section-name"
-								class="form-select w-full"
-								required
-							>
-								<option value="" disabled selected>Select a Section</option>
-								<? for (var i = 0; i < sections.length; i++) { ?>
-								<option value="<?= sections[i] ?>"><?= sections[i] ?></option>
-								<? } ?>
-							</select>
+				<form id="production-form" class="p-4">
+					<div class="row g-3 mb-4 d-flex justify-content-between">
+						<div class="col-md-3">
+							<div class="form-floating">
+								<select
+									class="form-select"
+									id="section-name"
+									name="section-name"
+									required
+								>
+									<option value="" disabled selected>Loading...</option>
+								</select>
+								<label for="section-name"
+									><i class="fas fa-building me-2"></i>Section Name</label
+								>
+							</div>
 						</div>
-						<div>
-							<label
-								for="time"
-								class="block text-sm font-medium text-slate-600 mb-3"
-								><i class="fas fa-clock mr-2 opacity-80"></i>Time Slot</label
-							>
-							<select id="time" name="time" class="form-select w-full" required>
-								<option value="" disabled selected>Select a Time</option>
-								<? for (var i = 0; i < times.length; i++) { ?>
-								<option value="<?= times[i] ?>"><?= times[i] ?></option>
-								<? } ?>
-							</select>
+						<div class="col-md-3">
+							<div class="form-floating">
+								<select class="form-select" id="time" name="time" required>
+									<option value="" disabled selected>Loading...</option>
+								</select>
+								<label for="time"
+									><i class="fas fa-clock me-2"></i>Time Slot</label
+								>
+							</div>
 						</div>
 					</div>
 
-					<div
-						class="overflow-x-auto rounded-lg border border-gray-200 shadow-sm mb-10"
-					>
-						<table class="min-w-full">
+					<div class="table-responsive rounded border shadow-sm mb-4">
+						<table class="table table-striped mb-0">
 							<thead class="table-header">
 								<tr>
-									<th class="px-6 py-3 text-left w-2/5">Item Name</th>
-									<th class="px-6 py-3 text-center w-1/5">Quantity</th>
-									<th class="px-6 py-3 text-center w-2/5">Action</th>
+									<th scope="col" class="text-left">Item Name</th>
+									<th scope="col" class="text-center">Quantity</th>
+									<th scope="col" class="text-center">Action</th>
 								</tr>
 							</thead>
-							<tbody
-								id="item-table-body"
-								class="bg-white divide-y divide-gray-200"
-							></tbody>
+							<tbody id="item-table-body"></tbody>
 						</table>
 					</div>
 
-					<div class="flex flex-col sm:flex-row items-center justify-end gap-6">
-						<div id="loader-container" class="loader-container">
-							<div class="loader"></div>
-							<span class="loader-text">Submitting report...</span>
-						</div>
-						<div
-							id="status-message"
-							class="text-base font-medium text-gray-600"
-						></div>
-						<button id="clear-button" type="button" class="btn-secondary">
-							<i class="fas fa-undo mr-2"></i>Clear Form
+					<div class="d-flex justify-content-center align-items-center gap-3 mt-4">
+						<button id="clear-button" type="button" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Clear all fields">
+							<i class="fas fa-undo me-2"></i>Clear Form
 						</button>
-						<button
-							id="submit-button"
-							type="submit"
-							class="btn-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
-						>
-							<i class="fas fa-paper-plane mr-2"></i>Submit Report
+						<button id="view-reports-button" type="button" class="btn btn-outline-info" data-bs-toggle="tooltip" data-bs-placement="top" title="View past submission reports">
+							<i class="fas fa-history me-2"></i>View Past Reports
+						</button>
+						<button id="submit-button" type="submit" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Submit the report">
+							<i class="fas fa-paper-plane me-2"></i>Submit Report
 						</button>
 					</div>
 				</form>
 			</div>
-            <div class="footer">
-                <p>Designed and developed by Md Bashir Ahmed. MIS, Ayesha Abed Foundation, Manikganj, Gorpara.</p>
-                <p>For any assistance, contact: 01332547334</p>
-            </div>
+			<div class="footer">
+				<p>
+					Designed and developed by Md Bashir Ahmed. MIS, Ayesha Abed
+					Foundation, Manikganj, Gorpara.
+				</p>
+				<p>For any assistance, contact: 01332547334</p>
+			</div>
 		</div>
 
-		<template id="item-options-template">
-			<option value="" disabled selected>Select an Item</option>
-			<? for (var i = 0; i < items.length; i++) { ?>
-			<option value="<?= items[i] ?>"><?= items[i] ?></option>
-			<? } ?>
-		</template>
-
 		<!-- Confirmation Modal -->
-		<div id="confirmation-modal" class="modal-overlay">
-			<div class="modal-content">
-				<h2 class="text-2xl font-bold text-gray-800 mb-4">
-					Confirm Submission
-				</h2>
-				<p class="text-gray-600 mb-6">
-					Are you sure you want to submit this report?
-				</p>
-				<div class="flex justify-end gap-4">
-					<button
-						id="modal-cancel"
-						type="button"
-						class="px-6 py-2 bg-gray-200 text-gray-800 font-medium rounded-md hover:bg-gray-300 transition-colors"
-					>
-						<i class="fas fa-times mr-2"></i>Cancel
-					</button>
-					<button
-						id="modal-confirm"
-						type="button"
-						class="px-6 py-2 bg-teal-600 text-white font-medium rounded-md hover:bg-teal-700 transition-colors"
-					>
-						<i class="fas fa-check mr-2"></i>Confirm
-					</button>
+		<div class="modal fade" id="confirmation-modal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="confirmationModalLabel">Confirm Submission</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						Are you sure you want to submit this report?
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+						<button type="button" id="modal-confirm" class="btn btn-primary">Confirm</button>
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<!-- Toast Notification Container -->
-		<div id="toast-container" class="toast-container"></div>
+		<template id="item-options-template">
+			<option value="" disabled selected>Select an Item</option>
+		</template>
 
+		<!-- View Reports Modal -->
+		<div class="modal fade" id="view-reports-modal" tabindex="-1" aria-labelledby="viewReportsModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="viewReportsModalLabel">Past Reports</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<div class="row g-3 mb-3">
+							<div class="col-md-8">
+								<input type="text" class="form-control" id="search-input" placeholder="Search reports...">
+							</div>
+							<div class="col-md-4">
+								<input type="date" class="form-control" id="date-filter-input">
+							</div>
+						</div>
+						<div class="table-responsive">
+							<table class="table table-bordered table-success table-striped table-hover">
+								<thead class="table-dark">
+									<tr>
+										<th scope="col">Timestamp</th>
+										<th scope="col">Section</th>
+										<th scope="col">Time</th>
+										<th scope="col">Item</th>
+										<th scope="col">Quantity</th>
+									</tr>
+								</thead>
+								<tbody id="reports-table-body">
+									<tr>
+										<td colspan="5" class="text-center">Loading reports...</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 11">
+			<div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+				<div class="toast-header">
+					<strong class="me-auto">Notification</strong>
+					<small>Just now</small>
+					<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+				</div>
+				<div class="toast-body" id="toast-message">
+					Your report was submitted successfully!
+				</div>
+			</div>
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 		<script>
 			document.addEventListener("DOMContentLoaded", () => {
+				const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+  				const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
 				const form = document.getElementById("production-form");
-				const formContainer = document.querySelector(".form-container");
 				const tableBody = document.getElementById("item-table-body");
 				const itemOptionsTemplate = document.getElementById(
 					"item-options-template"
 				);
-				const loaderContainer = document.getElementById("loader-container");
-				const submitButton = document.getElementById("submit-button");
-				const modal = document.getElementById("confirmation-modal");
-				const modalConfirm = document.getElementById("modal-confirm");
-				const modalCancel = document.getElementById("modal-cancel");
 				const clearButton = document.getElementById("clear-button");
+				const submitButton = document.getElementById("submit-button");
+				const modal = new bootstrap.Modal(
+					document.getElementById("confirmation-modal")
+				);
+				const modalConfirm = document.getElementById("modal-confirm");
+				const viewReportsModal = new bootstrap.Modal(document.getElementById("view-reports-modal"));
+				const viewReportsButton = document.getElementById("view-reports-button");
+				const reportsTableBody = document.getElementById("reports-table-body");
+				const searchInput = document.getElementById("search-input");
+				let allReports = null;
+				let filteredReports = null;
 
-				let formDataToSubmit = null;
+				viewReportsButton.addEventListener("click", () => {
+					viewReportsModal.show();
+					loadReports();
+				});
+
+				function loadReports() {
+					reportsTableBody.innerHTML = '<tr><td colspan="5" class="text-center">Loading reports...</td></tr>';
+					google.script.run
+						.withSuccessHandler((reports) => {
+							allReports = reports;
+							filteredReports = reports;
+							displayReports(reports);
+						})
+						.withFailureHandler((error) => {
+							reportsTableBody.innerHTML = `<tr><td colspan="5" class="text-center text-danger">Error loading reports: ${error.message}</td></tr>`;
+						})
+						.getPastReports();
+				}
+
+				function displayReports(reports) {
+					if (reports.length === 0) {
+						reportsTableBody.innerHTML = '<tr><td colspan="5" class="text-center">No reports found.</td></tr>';
+						return;
+					}
+
+					reportsTableBody.innerHTML = '';
+					reports.forEach(report => {
+						const row = document.createElement("tr");
+						const date = new Date(report[0]);
+						const formattedDate = date.toLocaleDateString('en-GB', {
+							day: '2-digit',
+							month: '2-digit',
+							year: 'numeric'
+						});
+						row.innerHTML = `
+							<td>${formattedDate}</td>
+							<td>${report[1]}</td>
+							<td>${report[2]}</td>
+							<td>${report[3]}</td>
+							<td>${report[4]}</td>
+						`;
+						reportsTableBody.appendChild(row);
+					});
+				}
+
+				const dateFilterInput = document.getElementById("date-filter-input");
+
+				function filterReports() {
+					if (!allReports) return;
+
+					const searchTerm = searchInput.value.toLowerCase();
+					const filterDate = dateFilterInput.value;
+
+					filteredReports = allReports.filter(report => {
+						const reportDate = new Date(report[0]);
+						const formattedReportDate = reportDate.toISOString().split('T')[0];
+						
+						const dateMatch = !filterDate || formattedReportDate === filterDate;
+						const searchMatch = !searchTerm || report.some(cell => cell.toString().toLowerCase().includes(searchTerm));
+						return dateMatch && searchMatch;
+					});
+					
+					displayReports(filteredReports);
+				}
+
+				searchInput.addEventListener("input", filterReports);
+				dateFilterInput.addEventListener("change", filterReports);
+
+				function loadDropdownData() {
+					console.log("Fetching dropdown data...");
+					google.script.run
+						.withSuccessHandler((data) => {
+							console.log("Received dropdown data:", data);
+							dropdownData = data;
+							populateDropdowns();
+							// Create the first row only after dropdowns are populated
+							createNewRow();
+						})
+						.withFailureHandler((error) => {
+							console.error("Failed to load dropdown data:", error);
+							showToast(`Failed to load dropdown data: ${error.message}`, "danger");
+						})
+						.getDropdownDataForClient();
+				}
+
+				function populateDropdowns() {
+					const sectionSelect = document.getElementById("section-name");
+					const timeSelect = document.getElementById("time");
+					const itemTemplate = document.getElementById("item-options-template");
+
+					// Populate Section dropdown
+					sectionSelect.innerHTML = '<option value="" disabled selected>Select a Section</option>';
+					dropdownData.sections.forEach(section => {
+						const option = document.createElement("option");
+						option.value = section;
+						option.textContent = section;
+						sectionSelect.appendChild(option);
+					});
+
+					// Populate Time dropdown
+					timeSelect.innerHTML = '<option value="" disabled selected>Select a Time</option>';
+					dropdownData.times.forEach(time => {
+						const option = document.createElement("option");
+						option.value = time;
+						option.textContent = time;
+						timeSelect.appendChild(option);
+					});
+
+					// Populate Item template
+					itemTemplate.innerHTML = '<option value="" disabled selected>Select an Item</option>';
+					dropdownData.items.forEach(item => {
+						const option = document.createElement("option");
+						option.value = item;
+						option.textContent = item;
+						itemTemplate.appendChild(option);
+					});
+				}
 
 				function createNewRow() {
 					const newRow = document.createElement("tr");
 					newRow.innerHTML = `
-            <td class="px-6 py-4 whitespace-nowrap">
-              <select name="item-name" class="item-name-select form-select w-full" required>
-                ${itemOptionsTemplate.innerHTML}
-              </select>
+            <td class="align-middle">
+              <div class="form-floating">
+                <select name="item-name" class="item-name-select form-select" required>
+                  <option value="" disabled selected>Select an Item</option>
+                </select>
+                <label for="item-name">Item Name</label>
+              </div>
             </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-              <input type="number" name="qty" class="qty-input form-input w-full" placeholder="e.g., 50" min="1" required>
+            <td class="align-middle">
+              <div class="form-floating">
+                <input type="number" name="qty" class="qty-input form-control" placeholder="e.g., 50" min="0" required>
+                <label for="qty">Quantity</label>
+              </div>
             </td>
-            <td class="px-6 py-4 whitespace-nowrap text-center text-xl">
-              <button type="button" class="add-row-btn action-btn" title="Add new row">
-                <i class="fas fa-plus"></i>
+            <td class="text-center align-middle">
+              <button type="button" class="add-row-btn action-btn" data-bs-toggle="tooltip" data-bs-placement="top" title="Add new row">
+                <i class="fas fa-plus-circle"></i>
               </button>
-              <button type="button" class="delete-row-btn action-btn ml-4" title="Delete this row">
-                <i class="fas fa-minus-circle"></i>
+              <button type="button" class="delete-row-btn action-btn ms-2" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete this row">
+                <i class="fas fa-trash-alt"></i>
               </button>
             </td>
           `;
-					tableBody.appendChild(newRow);
 
-					updateDeleteButtons();
-					const itemNameSelect = newRow.querySelector(".item-name-select");
-					itemNameSelect.focus();
-					itemNameSelect.addEventListener("change", updateItemOptions);
-				}
-
-				function updateItemOptions() {
-					const allItemSelects =
-						tableBody.querySelectorAll(".item-name-select");
-					const selectedValues = new Set();
-					allItemSelects.forEach((select) => {
-						if (select.value) selectedValues.add(select.value);
-					});
-					allItemSelects.forEach((select) => {
-						const currentValue = select.value;
-						Array.from(select.options).forEach((option) => {
-							option.disabled =
-								selectedValues.has(option.value) &&
-								option.value !== currentValue;
+					const newSelect = newRow.querySelector('.item-name-select');
+					if (dropdownData && dropdownData.items) {
+						dropdownData.items.forEach(item => {
+							const option = document.createElement("option");
+							option.value = item;
+							option.textContent = item;
+							newSelect.appendChild(option);
 						});
-					});
+					}
+
+					tableBody.appendChild(newRow);
+					const newTooltips = newRow.querySelectorAll('[data-bs-toggle="tooltip"]');
+					[...newTooltips].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+					updateDeleteButtons();
 				}
 
 				function updateDeleteButtons() {
 					const rows = tableBody.querySelectorAll("tr");
-					rows.forEach((row) => {
+					rows.forEach((row, index) => {
 						const deleteBtn = row.querySelector(".delete-row-btn");
 						if (deleteBtn) {
 							deleteBtn.style.display =
@@ -618,63 +462,65 @@
 				tableBody.addEventListener("click", (e) => {
 					const addBtn = e.target.closest(".add-row-btn");
 					const deleteBtn = e.target.closest(".delete-row-btn");
-					if (addBtn) createNewRow();
+					if (addBtn) {
+						createNewRow();
+					}
 					if (deleteBtn) {
 						deleteBtn.closest("tr").remove();
 						updateDeleteButtons();
-						updateItemOptions();
 					}
 				});
 
+				clearButton.addEventListener("click", () => {
+					form.reset();
+					tableBody.innerHTML = "";
+					createNewRow();
+					const toast = new bootstrap.Toast(toastLiveExample);
+					toastMessage.textContent = "Form has been cleared.";
+					toast.show();
+				});
+
 				function showToast(message, type = "success") {
-					const toastContainer = document.getElementById("toast-container");
-					const toast = document.createElement("div");
-					toast.className = `toast ${type}`;
-					toast.innerHTML = `<p>${message}</p>`;
-					toastContainer.appendChild(toast);
-					setTimeout(() => toast.classList.add("show"), 10);
-					setTimeout(() => {
-						toast.classList.remove("show");
-						setTimeout(() => toast.remove(), 300);
-					}, 4000);
+					const toastLiveExample = document.getElementById('liveToast');
+					const toastMessage = document.getElementById('toast-message');
+					
+					toastMessage.textContent = message;
+					toastLiveExample.className = `toast bg-${type}`;
+					
+					const toast = new bootstrap.Toast(toastLiveExample, {
+						delay: 5000,
+						autohide: true
+					});
+					
+					toast.show();
 				}
 
 				function handleSubmission() {
-					loaderContainer.style.display = "flex";
 					submitButton.disabled = true;
-					submitButton.textContent = "Submitting...";
+					submitButton.innerHTML = `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Submitting...`;
 
-					// Add a subtle pulse animation to the submit button
-					submitButton.style.animation = "pulse 1s ease-in-out 3";
+					const resetSubmitButton = () => {
+						submitButton.disabled = false;
+						submitButton.innerHTML = `<i class="fas fa-paper-plane me-2"></i>Submit Report`;
+					};
 
 					google.script.run
 						.withSuccessHandler((response) => {
 							if (response.status === "success") {
-								// Animate the form container on success
-								formContainer.style.animation = "bounce 0.6s ease-out";
-								setTimeout(() => {
-									formContainer.style.animation = "";
-								}, 600);
-
 								showToast(response.message, "success");
-								form.reset();
-								tableBody.innerHTML = "";
-								createNewRow();
-								updateItemOptions();
+								setTimeout(() => {
+									form.reset();
+									tableBody.innerHTML = "";
+									createNewRow();
+								}, 500);
 							} else {
-								showToast(`Error: ${response.message}`, "error");
+								showToast(`Error: ${response.message}`, "danger");
 							}
-							loaderContainer.style.display = "none";
-							submitButton.disabled = false;
-							submitButton.textContent = "Submit Report";
-							submitButton.style.animation = "";
+							resetSubmitButton();
 						})
 						.withFailureHandler((error) => {
-							showToast(`Submission failed: ${error.message}`, "error");
-							loaderContainer.style.display = "none";
-							submitButton.disabled = false;
-							submitButton.textContent = "Submit Report";
-							submitButton.style.animation = "";
+							showToast(`Submission failed: ${error.message}`, "danger");
+							resetSubmitButton();
 						})
 						.saveData(formDataToSubmit);
 				}
@@ -700,25 +546,12 @@
 						return;
 					}
 					formDataToSubmit = { sectionName, time, items };
-					modal.classList.add("visible");
+					modal.show();
 				});
 
 				modalConfirm.addEventListener("click", () => {
-					modal.classList.remove("visible");
+					modal.hide();
 					handleSubmission();
-				});
-
-				modalCancel.addEventListener("click", () => {
-					modal.classList.remove("visible");
-					formDataToSubmit = null;
-				});
-
-				clearButton.addEventListener("click", () => {
-					form.reset();
-					tableBody.innerHTML = "";
-					createNewRow();
-					updateItemOptions();
-					showToast("Form has been cleared.", "success");
 				});
 
 				function displayDate() {
@@ -732,9 +565,9 @@
 					};
 					dateElement.textContent = today.toLocaleDateString("en-US", options);
 				}
+
 				displayDate();
-				createNewRow();
-				updateItemOptions();
+				loadDropdownData();
 			});
 		</script>
 	</body>

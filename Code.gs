@@ -5,12 +5,6 @@ function doGet(e) {
 	// Create an HTML template from the 'index.html' file.
 	const htmlTemplate = HtmlService.createTemplateFromFile('index');
 
-	// Fetch the dynamic data for the dropdowns.
-	const data = getDropdownData();
-	htmlTemplate.sections = data.sections;
-	htmlTemplate.items = data.items;
-	htmlTemplate.times = data.times;
-
 	// Build and return the HTML page.
 	return htmlTemplate
 		.evaluate()
@@ -20,6 +14,7 @@ function doGet(e) {
 
 /**
  * Reads the dropdown options from the 'Settings' sheet in your spreadsheet.
+ * This function is used server-side to pre-populate the HTML template.
  */
 function getDropdownData() {
 	const ss = SpreadsheetApp.openById(
@@ -48,6 +43,68 @@ function getDropdownData() {
 }
 
 /**
+ * Reads the dropdown options from the 'Settings' sheet in your spreadsheet.
+ * This function is called asynchronously from the client-side.
+ * @returns {Object} An object containing sections, items, and times arrays.
+ */
+function getDropdownDataForClient() {
+	const ss = SpreadsheetApp.openById(
+		'1iReWL_RZgjPHi8OBSguUDjzMF0Qr_Nx6E0ZndJSSRgk'
+	);
+	const settingsSheet = ss.getSheetByName('Settings');
+
+	// Read data from columns A, B, and C, starting from the second row.
+	const sections = settingsSheet
+		.getRange('A2:A')
+		.getValues()
+		.flat()
+		.filter(String);
+	const items = settingsSheet
+		.getRange('B2:B')
+		.getValues()
+		.flat()
+		.filter(String);
+	const times = settingsSheet
+		.getRange('C2:C')
+		.getValues()
+		.flat()
+		.filter(String);
+
+	// Log the data to help with debugging.
+	Logger.log("Sections: " + sections);
+	Logger.log("Items: " + items);
+	Logger.log("Times: " + times);
+
+	return { sections, items, times };
+}
+
+/**
+ * Retrieves all past reports from the 'Response' sheet.
+ * @returns {Array<Array<any>>} A 2D array of report data.
+ */
+function getPastReports() {
+	const ss = SpreadsheetApp.openById(
+		'1iReWL_RZgjPHi8OBSguUDjzMF0Qr_Nx6E0ZndJSSRgk'
+	);
+	const reportSheet = ss.getSheetByName('Response');
+
+	if (!reportSheet) {
+		throw new Error(
+			"Sheet 'Response' not found. Please check the sheet name is correct and has no extra spaces."
+		);
+	}
+
+	const data = reportSheet.getDataRange().getValues();
+	if (data.length <= 1) {
+		return [];
+	}
+
+	// Return the raw data and let the client handle formatting.
+	// This is more robust.
+	return data.slice(1);
+}
+
+/**
  * Saves the submitted form data into the 'Hourly Report' sheet.
  * This function is called from the client-side JavaScript.
  */
@@ -65,11 +122,7 @@ function saveData(formData) {
 			);
 		}
 
-		const timestamp = Utilities.formatDate(
-			new Date(),
-			Session.getScriptTimeZone(),
-			'dd/MM/yyyy'
-		);
+		const timestamp = new Date();
 
 		// If the report sheet is empty, add headers first.
 		if (reportSheet.getLastRow() === 0) {

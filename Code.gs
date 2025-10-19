@@ -3,13 +3,13 @@
  */
 function doGet(e) {
 	// Create an HTML template from the 'index.html' file.
-	const htmlTemplate = HtmlService.createTemplateFromFile('index');
+	const htmlTemplate = HtmlService.createTemplateFromFile("index");
 
 	// Build and return the HTML page.
 	return htmlTemplate
 		.evaluate()
-		.setTitle('Hourly Production Report')
-		.addMetaTag('viewport', 'width=device-width, initial-scale=1.0');
+		.setTitle("Hourly Production Report")
+		.addMetaTag("viewport", "width=device-width, initial-scale=1.0");
 }
 
 /**
@@ -18,23 +18,23 @@ function doGet(e) {
  */
 function getDropdownData() {
 	const ss = SpreadsheetApp.openById(
-		'1iReWL_RZgjPHi8OBSguUDjzMF0Qr_Nx6E0ZndJSSRgk'
+		"1iReWL_RZgjPHi8OBSguUDjzMF0Qr_Nx6E0ZndJSSRgk"
 	);
-	const settingsSheet = ss.getSheetByName('Settings');
+	const settingsSheet = ss.getSheetByName("Settings");
 
 	// Read data from columns A, B, and C, starting from the second row.
 	const sections = settingsSheet
-		.getRange('A2:A')
+		.getRange("A2:A")
 		.getValues()
 		.flat()
 		.filter(String);
 	const items = settingsSheet
-		.getRange('B2:B')
+		.getRange("B2:B")
 		.getValues()
 		.flat()
 		.filter(String);
 	const times = settingsSheet
-		.getRange('C2:C')
+		.getRange("C2:C")
 		.getValues()
 		.flat()
 		.filter(String);
@@ -49,23 +49,23 @@ function getDropdownData() {
  */
 function getDropdownDataForClient() {
 	const ss = SpreadsheetApp.openById(
-		'1iReWL_RZgjPHi8OBSguUDjzMF0Qr_Nx6E0ZndJSSRgk'
+		"1iReWL_RZgjPHi8OBSguUDjzMF0Qr_Nx6E0ZndJSSRgk"
 	);
-	const settingsSheet = ss.getSheetByName('Settings');
+	const settingsSheet = ss.getSheetByName("Settings");
 
 	// Read data from columns A, B, and C, starting from the second row.
 	const sections = settingsSheet
-		.getRange('A2:A')
+		.getRange("A2:A")
 		.getValues()
 		.flat()
 		.filter(String);
 	const items = settingsSheet
-		.getRange('B2:B')
+		.getRange("B2:B")
 		.getValues()
 		.flat()
 		.filter(String);
 	const times = settingsSheet
-		.getRange('C2:C')
+		.getRange("C2:C")
 		.getValues()
 		.flat()
 		.filter(String);
@@ -84,9 +84,9 @@ function getDropdownDataForClient() {
  */
 function getPastReports() {
 	const ss = SpreadsheetApp.openById(
-		'1iReWL_RZgjPHi8OBSguUDjzMF0Qr_Nx6E0ZndJSSRgk'
+		"1iReWL_RZgjPHi8OBSguUDjzMF0Qr_Nx6E0ZndJSSRgk"
 	);
-	const reportSheet = ss.getSheetByName('Response');
+	const reportSheet = ss.getSheetByName("Response");
 
 	if (!reportSheet) {
 		throw new Error(
@@ -94,7 +94,7 @@ function getPastReports() {
 		);
 	}
 
-	const data = reportSheet.getDataRange().getValues();
+	const data = reportSheet.getDataRange().getDisplayValues();
 	if (data.length <= 1) {
 		return [];
 	}
@@ -111,9 +111,9 @@ function getPastReports() {
 function saveData(formData) {
 	try {
 		const ss = SpreadsheetApp.openById(
-			'1iReWL_RZgjPHi8OBSguUDjzMF0Qr_Nx6E0ZndJSSRgk'
+			"1iReWL_RZgjPHi8OBSguUDjzMF0Qr_Nx6E0ZndJSSRgk"
 		);
-		const reportSheet = ss.getSheetByName('Response');
+		const reportSheet = ss.getSheetByName("Response");
 
 		// Check if the sheet was found. If not, throw an error.
 		if (!reportSheet) {
@@ -123,16 +123,16 @@ function saveData(formData) {
 		}
 
 		const timezone = ss.getSpreadsheetTimeZone();
-		const timestamp = Utilities.formatDate(new Date(), timezone, 'dd/MM/yyyy');
+		const timestamp = Utilities.formatDate(new Date(), timezone, "dd/MM/yyyy");
 
 		// If the report sheet is empty, add headers first.
 		if (reportSheet.getLastRow() === 0) {
 			reportSheet.appendRow([
-				'Timestamp',
-				'Section Name',
-				'Time',
-				'Item Name',
-				'Qty',
+				"Timestamp",
+				"Section Name",
+				"Time",
+				"Item Name",
+				"Qty",
 			]);
 		}
 
@@ -147,9 +147,9 @@ function saveData(formData) {
 			]);
 		});
 
-		return { status: 'success', message: 'Data saved successfully!' };
+		return { status: "success", message: "Data saved successfully!" };
 	} catch (error) {
 		Logger.log(error); // Log errors for easier debugging.
-		return { status: 'error', message: error.message };
+		return { status: "error", message: error.message };
 	}
 }

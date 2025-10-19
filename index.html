@@ -115,7 +115,10 @@
 		<div class="container mt-5">
 			<div class="form-container shadow-lg">
 				<div class="form-header">
-					<div id="current-date" class="position-absolute top-0 end-0 p-3"></div>
+					<div
+						id="current-date"
+						class="position-absolute top-0 end-0 p-3"
+					></div>
 					<h1>Ayesha Abed Foundation, Gorpara</h1>
 					<p>Section Wise Daily Per Hour Production Report</p>
 				</div>
@@ -162,14 +165,37 @@
 						</table>
 					</div>
 
-					<div class="d-flex justify-content-center align-items-center gap-3 mt-4">
-						<button id="clear-button" type="button" class="btn btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Clear all fields">
+					<div
+						class="d-flex justify-content-center align-items-center gap-3 mt-4"
+					>
+						<button
+							id="clear-button"
+							type="button"
+							class="btn btn-outline-danger"
+							data-bs-toggle="tooltip"
+							data-bs-placement="top"
+							title="Clear all fields"
+						>
 							<i class="fas fa-undo me-2"></i>Clear Form
 						</button>
-						<button id="view-reports-button" type="button" class="btn btn-outline-info" data-bs-toggle="tooltip" data-bs-placement="top" title="View past submission reports">
+						<button
+							id="view-reports-button"
+							type="button"
+							class="btn btn-outline-info"
+							data-bs-toggle="tooltip"
+							data-bs-placement="top"
+							title="View past submission reports"
+						>
 							<i class="fas fa-history me-2"></i>View Past Reports
 						</button>
-						<button id="submit-button" type="submit" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Submit the report">
+						<button
+							id="submit-button"
+							type="submit"
+							class="btn btn-primary"
+							data-bs-toggle="tooltip"
+							data-bs-placement="top"
+							title="Submit the report"
+						>
 							<i class="fas fa-paper-plane me-2"></i>Submit Report
 						</button>
 					</div>
@@ -185,19 +211,38 @@
 		</div>
 
 		<!-- Confirmation Modal -->
-		<div class="modal fade" id="confirmation-modal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
+		<div
+			class="modal fade"
+			id="confirmation-modal"
+			tabindex="-1"
+			aria-labelledby="confirmationModalLabel"
+			aria-hidden="true"
+		>
+			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
 					<div class="modal-header">
-						<h5 class="modal-title" id="confirmationModalLabel">Confirm Submission</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						<h5 class="modal-title" id="confirmationModalLabel">
+							Confirm Submission
+						</h5>
 					</div>
 					<div class="modal-body">
 						Are you sure you want to submit this report?
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-						<button type="button" id="modal-confirm" class="btn btn-primary">Confirm</button>
+						<button
+							type="button"
+							class="btn btn-danger btn-sm"
+							data-bs-dismiss="modal"
+						>
+							Cancel
+						</button>
+						<button
+							type="button"
+							id="modal-confirm"
+							class="btn btn-success btn-sm"
+						>
+							Confirm
+						</button>
 					</div>
 				</div>
 			</div>
@@ -208,24 +253,46 @@
 		</template>
 
 		<!-- View Reports Modal -->
-		<div class="modal fade" id="view-reports-modal" tabindex="-1" aria-labelledby="viewReportsModalLabel" aria-hidden="true">
+		<div
+			class="modal fade"
+			id="view-reports-modal"
+			tabindex="-1"
+			aria-labelledby="viewReportsModalLabel"
+			aria-hidden="true"
+		>
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title" id="viewReportsModalLabel">Past Reports</h5>
-						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
 					</div>
 					<div class="modal-body">
 						<div class="row g-3 mb-3">
 							<div class="col-md-8">
-								<input type="text" class="form-control" id="search-input" placeholder="Search reports...">
+								<input
+									type="text"
+									class="form-control"
+									id="search-input"
+									placeholder="Search reports..."
+								/>
 							</div>
 							<div class="col-md-4">
-								<input type="date" class="form-control" id="date-filter-input">
+								<input
+									type="date"
+									class="form-control"
+									id="date-filter-input"
+								/>
 							</div>
 						</div>
 						<div class="table-responsive">
-							<table class="table table-bordered table-success table-striped table-hover">
+							<table
+								class="table table-bordered table-success table-striped table-hover"
+							>
 								<thead class="table-dark">
 									<tr>
 										<th scope="col">Timestamp</th>
@@ -244,18 +311,38 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						<button
+							type="button"
+							class="btn btn-secondary"
+							data-bs-dismiss="modal"
+						>
+							Close
+						</button>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 11">
-			<div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+		<div
+			class="toast-container position-fixed top-0 end-0 p-3"
+			style="z-index: 11"
+		>
+			<div
+				id="liveToast"
+				class="toast"
+				role="alert"
+				aria-live="assertive"
+				aria-atomic="true"
+			>
 				<div class="toast-header">
 					<strong class="me-auto">Notification</strong>
 					<small>Just now</small>
-					<button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+					<button
+						type="button"
+						class="btn-close"
+						data-bs-dismiss="toast"
+						aria-label="Close"
+					></button>
 				</div>
 				<div class="toast-body" id="toast-message">
 					Your report was submitted successfully!
@@ -266,8 +353,12 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 		<script>
 			document.addEventListener("DOMContentLoaded", () => {
-				const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-  				const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+				const tooltipTriggerList = document.querySelectorAll(
+					'[data-bs-toggle="tooltip"]'
+				);
+				const tooltipList = [...tooltipTriggerList].map(
+					(tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+				);
 
 				const form = document.getElementById("production-form");
 				const tableBody = document.getElementById("item-table-body");
@@ -280,8 +371,12 @@
 					document.getElementById("confirmation-modal")
 				);
 				const modalConfirm = document.getElementById("modal-confirm");
-				const viewReportsModal = new bootstrap.Modal(document.getElementById("view-reports-modal"));
-				const viewReportsButton = document.getElementById("view-reports-button");
+				const viewReportsModal = new bootstrap.Modal(
+					document.getElementById("view-reports-modal")
+				);
+				const viewReportsButton = document.getElementById(
+					"view-reports-button"
+				);
 				const reportsTableBody = document.getElementById("reports-table-body");
 				const searchInput = document.getElementById("search-input");
 				let allReports = null;
@@ -293,7 +388,8 @@
 				});
 
 				function loadReports() {
-					reportsTableBody.innerHTML = '<tr><td colspan="5" class="text-center">Loading reports...</td></tr>';
+					reportsTableBody.innerHTML =
+						'<tr><td colspan="5" class="text-center">Loading reports...</td></tr>';
 					google.script.run
 						.withSuccessHandler((reports) => {
 							allReports = reports;
@@ -308,21 +404,16 @@
 
 				function displayReports(reports) {
 					if (reports.length === 0) {
-						reportsTableBody.innerHTML = '<tr><td colspan="5" class="text-center">No reports found.</td></tr>';
+						reportsTableBody.innerHTML =
+							'<tr><td colspan="5" class="text-center">No reports found.</td></tr>';
 						return;
 					}
 
-					reportsTableBody.innerHTML = '';
-					reports.forEach(report => {
+					reportsTableBody.innerHTML = "";
+					reports.forEach((report) => {
 						const row = document.createElement("tr");
-						const date = new Date(report[0]);
-						const formattedDate = date.toLocaleDateString('en-GB', {
-							day: '2-digit',
-							month: '2-digit',
-							year: 'numeric'
-						});
 						row.innerHTML = `
-							<td>${formattedDate}</td>
+							<td>${report[0]}</td>
 							<td>${report[1]}</td>
 							<td>${report[2]}</td>
 							<td>${report[3]}</td>
@@ -340,15 +431,19 @@
 					const searchTerm = searchInput.value.toLowerCase();
 					const filterDate = dateFilterInput.value;
 
-					filteredReports = allReports.filter(report => {
-						const reportDate = new Date(report[0]);
-						const formattedReportDate = reportDate.toISOString().split('T')[0];
-						
+					filteredReports = allReports.filter((report) => {
+						const parts = report[0].split("/");
+						const formattedReportDate = `${parts[2]}-${parts[1]}-${parts[0]}`;
+
 						const dateMatch = !filterDate || formattedReportDate === filterDate;
-						const searchMatch = !searchTerm || report.some(cell => cell.toString().toLowerCase().includes(searchTerm));
+						const searchMatch =
+							!searchTerm ||
+							report.some((cell) =>
+								cell.toString().toLowerCase().includes(searchTerm)
+							);
 						return dateMatch && searchMatch;
 					});
-					
+
 					displayReports(filteredReports);
 				}
 
@@ -367,7 +462,10 @@
 						})
 						.withFailureHandler((error) => {
 							console.error("Failed to load dropdown data:", error);
-							showToast(`Failed to load dropdown data: ${error.message}`, "danger");
+							showToast(
+								`Failed to load dropdown data: ${error.message}`,
+								"danger"
+							);
 						})
 						.getDropdownDataForClient();
 				}
@@ -378,8 +476,9 @@
 					const itemTemplate = document.getElementById("item-options-template");
 
 					// Populate Section dropdown
-					sectionSelect.innerHTML = '<option value="" disabled selected>Select a Section</option>';
-					dropdownData.sections.forEach(section => {
+					sectionSelect.innerHTML =
+						'<option value="" disabled selected>Select a Section</option>';
+					dropdownData.sections.forEach((section) => {
 						const option = document.createElement("option");
 						option.value = section;
 						option.textContent = section;
@@ -387,8 +486,9 @@
 					});
 
 					// Populate Time dropdown
-					timeSelect.innerHTML = '<option value="" disabled selected>Select a Time</option>';
-					dropdownData.times.forEach(time => {
+					timeSelect.innerHTML =
+						'<option value="" disabled selected>Select a Time</option>';
+					dropdownData.times.forEach((time) => {
 						const option = document.createElement("option");
 						option.value = time;
 						option.textContent = time;
@@ -396,8 +496,9 @@
 					});
 
 					// Populate Item template
-					itemTemplate.innerHTML = '<option value="" disabled selected>Select an Item</option>';
-					dropdownData.items.forEach(item => {
+					itemTemplate.innerHTML =
+						'<option value="" disabled selected>Select an Item</option>';
+					dropdownData.items.forEach((item) => {
 						const option = document.createElement("option");
 						option.value = item;
 						option.textContent = item;
@@ -432,9 +533,9 @@
             </td>
           `;
 
-					const newSelect = newRow.querySelector('.item-name-select');
+					const newSelect = newRow.querySelector(".item-name-select");
 					if (dropdownData && dropdownData.items) {
-						dropdownData.items.forEach(item => {
+						dropdownData.items.forEach((item) => {
 							const option = document.createElement("option");
 							option.value = item;
 							option.textContent = item;
@@ -443,8 +544,12 @@
 					}
 
 					tableBody.appendChild(newRow);
-					const newTooltips = newRow.querySelectorAll('[data-bs-toggle="tooltip"]');
-					[...newTooltips].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+					const newTooltips = newRow.querySelectorAll(
+						'[data-bs-toggle="tooltip"]'
+					);
+					[...newTooltips].map(
+						(tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl)
+					);
 					updateDeleteButtons();
 				}
 
@@ -481,17 +586,17 @@
 				});
 
 				function showToast(message, type = "success") {
-					const toastLiveExample = document.getElementById('liveToast');
-					const toastMessage = document.getElementById('toast-message');
-					
+					const toastLiveExample = document.getElementById("liveToast");
+					const toastMessage = document.getElementById("toast-message");
+
 					toastMessage.textContent = message;
 					toastLiveExample.className = `toast bg-${type}`;
-					
+
 					const toast = new bootstrap.Toast(toastLiveExample, {
 						delay: 5000,
-						autohide: true
+						autohide: true,
 					});
-					
+
 					toast.show();
 				}
 

@@ -122,7 +122,8 @@ function saveData(formData) {
 			);
 		}
 
-		const timestamp = new Date();
+		const timezone = ss.getSpreadsheetTimeZone();
+		const timestamp = Utilities.formatDate(new Date(), timezone, 'dd/MM/yyyy');
 
 		// If the report sheet is empty, add headers first.
 		if (reportSheet.getLastRow() === 0) {
